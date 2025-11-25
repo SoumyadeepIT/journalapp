@@ -1,0 +1,25 @@
+package net.engineeringdigest.journalapp.Entry;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.SerializableSerializer;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import lombok.Data;
+import lombok.NonNull;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@Document(collection = "journal_entries")
+public class JournalEntry {
+    @Id
+    private ObjectId id;
+    @NonNull
+    private String title;
+    private String content;
+    private LocalDate date;
+}
